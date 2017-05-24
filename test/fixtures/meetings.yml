@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2017-05-24 13:32:46
+  day: MyString
+  room: MyString
+  building: one
+  course: one
+
+two:
+  time: 2017-05-24 13:32:46
+  day: MyString
+  room: MyString
+  building: two
+  course: two

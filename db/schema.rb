@@ -10,10 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524150225) do
+ActiveRecord::Schema.define(version: 20170524203246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "symbol"
+    t.string   "img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "department_id"
+    t.integer  "instructor_id"
+    t.integer  "term_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["department_id"], name: "index_courses_on_department_id", using: :btree
+    t.index ["instructor_id"], name: "index_courses_on_instructor_id", using: :btree
+    t.index ["term_id"], name: "index_courses_on_term_id", using: :btree
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "symbol"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.time     "time"
+    t.string   "day"
+    t.string   "room"
+    t.integer  "building_id"
+    t.integer  "course_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["building_id"], name: "index_meetings_on_building_id", using: :btree
+    t.index ["course_id"], name: "index_meetings_on_course_id", using: :btree
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_schedules_on_course_id", using: :btree
+    t.index ["student_id"], name: "index_schedules_on_student_id", using: :btree
+  end
 
   create_table "students", force: :cascade do |t|
     t.string   "username"
@@ -24,4 +80,19 @@ ActiveRecord::Schema.define(version: 20170524150225) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string   "symbol"
+    t.string   "season"
+    t.integer  "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "courses", "departments"
+  add_foreign_key "courses", "instructors"
+  add_foreign_key "courses", "terms"
+  add_foreign_key "meetings", "buildings"
+  add_foreign_key "meetings", "courses"
+  add_foreign_key "schedules", "courses"
+  add_foreign_key "schedules", "students"
 end
