@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :rooms
+  resources :meetings
+  resources :schedules
+  resources :courses
+  resources :buildings
+  resources :terms
+  resources :instructors
+  resources :departments
   resources :students do
     collection do
       post '/login', to: 'students#login'
