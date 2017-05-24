@@ -12,7 +12,7 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create meeting" do
     assert_difference('Meeting.count') do
-      post meetings_url, params: { meeting: { building_id: @meeting.building_id, course_id: @meeting.course_id, day: @meeting.day, room: @meeting.room, time: @meeting.time } }, as: :json
+      post meetings_url, params: { meeting: { course_id: @meeting.course_id, day: @meeting.day, room_id: @meeting.room_id, time: @meeting.time } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update meeting" do
-    patch meeting_url(@meeting), params: { meeting: { building_id: @meeting.building_id, course_id: @meeting.course_id, day: @meeting.day, room: @meeting.room, time: @meeting.time } }, as: :json
+    patch meeting_url(@meeting), params: { meeting: { course_id: @meeting.course_id, day: @meeting.day, room_id: @meeting.room_id, time: @meeting.time } }, as: :json
     assert_response 200
   end
 

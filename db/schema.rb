@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524203246) do
+ActiveRecord::Schema.define(version: 20170524212508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,13 +53,20 @@ ActiveRecord::Schema.define(version: 20170524203246) do
   create_table "meetings", force: :cascade do |t|
     t.time     "time"
     t.string   "day"
-    t.string   "room"
-    t.integer  "building_id"
+    t.integer  "room_id"
     t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_meetings_on_course_id", using: :btree
+    t.index ["room_id"], name: "index_meetings_on_room_id", using: :btree
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "building_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["building_id"], name: "index_meetings_on_building_id", using: :btree
-    t.index ["course_id"], name: "index_meetings_on_course_id", using: :btree
+    t.index ["building_id"], name: "index_rooms_on_building_id", using: :btree
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -91,8 +98,9 @@ ActiveRecord::Schema.define(version: 20170524203246) do
   add_foreign_key "courses", "departments"
   add_foreign_key "courses", "instructors"
   add_foreign_key "courses", "terms"
-  add_foreign_key "meetings", "buildings"
   add_foreign_key "meetings", "courses"
+  add_foreign_key "meetings", "rooms"
+  add_foreign_key "rooms", "buildings"
   add_foreign_key "schedules", "courses"
   add_foreign_key "schedules", "students"
 end

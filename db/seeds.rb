@@ -26,6 +26,10 @@ Term.create(symbol: "S17", season: "Spring", year: 2017);
 
 Building.create(name: "Paccar", symbol: "PA", img: "http://www.alscarchitects.com/assets/Projects/paccar-center-for-applied-science-ID69/gonzaga-paccar.jpg");
 
+# Rooms
+
+Room.create(name: "201", building_id: 1);
+
 # Courses
 
 Course.create(name: "Differential Equations", description: "Fun with PDEs", department_id: 1, term_id: 1, instructor_id: 1);
@@ -36,5 +40,5 @@ Schedule.create(student_id: 1, course_id: 1);
 
 # Meetings
 
-Meeting.create(time: "10:00:00", day: 'T', room: "201", building_id: 1, course_id: 1);
-Meeting.create(time: "10:00:00", day: 'R', room: "201", building_id: 1, course_id: 1);
+Meeting.create(time: "10:00:00", day: 'T', room_id: 1, course_id: 1);
+Meeting.create(time: "10:00:00", day: 'R', room_id: 1, course_id: 1);

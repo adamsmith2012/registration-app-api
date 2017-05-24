@@ -1,4 +1,4 @@
 class Meeting < ApplicationRecord
-  belongs_to :building
+  belongs_to :room
   belongs_to :course
 end
