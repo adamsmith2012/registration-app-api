@@ -47,6 +47,5 @@ Schedule.create(student_id: 1, course_id: 3);
 Schedule.create(student_id: 2, course_id: 1);
 
 # Meetings
-
-Meeting.create(time: "10:00:00", day: 'T', room_id: 1, course_id: 1);
-Meeting.create(time: "10:00:00", day: 'R', room_id: 1, course_id: 1);
+Meeting.create(time: "10:00 AM", day: 'T', room_id: 1, course_id: 1);
+Meeting.create(time: "11:00 AM", day: 'R', room_id: 1, course_id: 1);

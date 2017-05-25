@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170524212508) do
   end
 
   create_table "meetings", force: :cascade do |t|
-    t.time     "time"
+    t.string   "time"
     t.string   "day"
     t.integer  "room_id"
     t.integer  "course_id"
