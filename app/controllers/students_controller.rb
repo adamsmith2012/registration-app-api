@@ -68,8 +68,6 @@ class StudentsController < ApplicationController
 
     # Generate a JavaScript Web Token
     def create_token(id, username)
-      puts "Id: #{id}"
-      puts "Username: #{username}"
       JWT.encode(payload(id, username), ENV['JWT_SECRET'], 'HS256')
     end
 
