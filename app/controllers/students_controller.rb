@@ -5,10 +5,8 @@ class StudentsController < ApplicationController
 
   def login
     student = Student.find_by(username: params[:student][:username])
-    puts "Username: " + student.username
-    puts "Password: " + params[:student][:password]
     if student && student.authenticate(params[:student][:password])
-      token = create_token(student.id, student.username)
+      token = create_token(student.id, params[:student][:password])
       render json: {status: 200, token: token, student: student}
     else
       render json: {status: 401, message: "Unauthorized"}
