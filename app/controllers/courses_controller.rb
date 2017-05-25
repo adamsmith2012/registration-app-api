@@ -8,13 +8,13 @@ class CoursesController < ApplicationController
       render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}])
     else
       @courses = Course.all
-      render json: @courses
+      render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}])
     end
   end
 
   # GET /courses/1
   def show
-    render json: @course
+    render json: @course.to_json(include: [:meetings => {include: [:room => {include: :building}]}])
   end
 
   # POST /courses

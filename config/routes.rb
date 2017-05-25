@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   # resources :buildings
   # resources :terms
   # resources :instructors
-  # resources :courses do
-  #   resources :students
-  # end
+  resources :courses do
+    resources :students, only: [:index]
+  end
   # resources :departments do
-  #   resources :courses
+  #   resources :courses, only: [:index]
   # end
   resources :students do
     resources :courses, only: [:index]

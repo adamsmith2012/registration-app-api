@@ -9,6 +9,7 @@
 # Students
 
 Student.create(username: "adamsmith", password: "adamsmith", first_name: "Adam", last_name: "Smith");
+Student.create(username: "billy", password: "billy", first_name: "Billy", last_name: "Johnson");
 
 # Departments
 
@@ -39,6 +40,7 @@ Course.create(name: "Ethics", description: "Ethics", department_id: 2, term_id: 
 # Schedules
 
 Schedule.create(student_id: 1, course_id: 1);
+Schedule.create(student_id: 2, course_id: 1);
 
 # Meetings
 
