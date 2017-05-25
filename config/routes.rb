@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   #   resources :courses, only: [:index]
   # end
   resources :students do
+    resources :terms do
+      resources :courses, only: [:index]
+    end
     resources :courses, only: [:index]
     collection do
       post '/login', to: 'students#login'

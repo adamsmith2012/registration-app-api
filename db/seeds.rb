@@ -23,6 +23,7 @@ Instructor.create(first_name: "Mark", last_name: "Jones");
 # Terms
 
 Term.create(symbol: "S17", season: "Spring", year: 2017);
+Term.create(symbol: "F16", season: "Fall", year: 2016);
 
 # Buildings
 
@@ -36,10 +37,13 @@ Room.create(name: "201", building_id: 1);
 
 Course.create(name: "Differential Equations", description: "Fun with PDEs", department_id: 1, term_id: 1, instructor_id: 1);
 Course.create(name: "Ethics", description: "Ethics", department_id: 2, term_id: 1, instructor_id: 1);
+Course.create(name: "Calculus 1", description: "Calc", department_id: 1, term_id: 2, instructor_id: 1);
 
 # Schedules
 
 Schedule.create(student_id: 1, course_id: 1);
+Schedule.create(student_id: 1, course_id: 2);
+Schedule.create(student_id: 1, course_id: 3);
 Schedule.create(student_id: 2, course_id: 1);
 
 # Meetings
