@@ -3,14 +3,21 @@ class CoursesController < ApplicationController
 
   # GET /courses
   def index
-    @courses = Course.all
-
-    render json: @courses
+    if params[:term_id] && params[:student_id]
+      @courses = Student.find(params[:student_id]).courses.where(term_id: params[:term_id])
+      render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}], include: :instructor)
+    elsif params[:student_id]
+      @courses = Student.find(params[:student_id]).courses
+      render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}], include: :instructor)
+    else
+      @courses = Course.all
+      render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}], include: :instructor)
+    end
   end
 
   # GET /courses/1
   def show
-    render json: @course
+    render json: @course.to_json(include: [:meetings => {include: [:room => {include: :building}]}], include: :instructor)
   end
 
   # POST /courses

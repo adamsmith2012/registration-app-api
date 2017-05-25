@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :rooms
-  resources :meetings
-  resources :schedules
-  resources :courses
-  resources :buildings
+  # resources :rooms
+  # resources :meetings
+  # resources :schedules
+  # resources :buildings
   resources :terms
-  resources :instructors
-  resources :departments
+  # resources :instructors
+  resources :courses do
+    resources :students, only: [:index]
+  end
+  # resources :departments do
+  #   resources :courses, only: [:index]
+  # end
   resources :students do
+    resources :terms do
+      resources :courses, only: [:index]
+    end
+    resources :courses, only: [:index]
     collection do
       post '/login', to: 'students#login'
     end
