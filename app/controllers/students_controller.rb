@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def login
     student = Student.find_by(username: params[:student][:username])
     if student && student.authenticate(params[:student][:password])
-      token = create_token(student.id, params[:student][:password])
+      token = create_token(student.id, student.username)
       render json: {status: 200, token: token, student: student}
     else
       render json: {status: 401, message: "Unauthorized"}
@@ -68,6 +68,8 @@ class StudentsController < ApplicationController
 
     # Generate a JavaScript Web Token
     def create_token(id, username)
+      puts "Id: #{id}"
+      puts "Username: #{username}"
       JWT.encode(payload(id, username), ENV['JWT_SECRET'], 'HS256')
     end
 
