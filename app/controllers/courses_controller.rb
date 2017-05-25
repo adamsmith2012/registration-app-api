@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   def index
     if params[:student_id]
       @courses = Student.find(params[:student_id]).courses
-      render json: @courses
+      render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}])
     else
       @courses = Course.all
       render json: @courses

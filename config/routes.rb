@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #   resources :courses
   # end
   resources :students do
-    resources :courses
+    resources :courses, only: [:index]
     collection do
       post '/login', to: 'students#login'
     end
