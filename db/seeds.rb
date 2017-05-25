@@ -32,6 +32,7 @@ Building.create(name: "Paccar", symbol: "PA", img: "http://www.alscarchitects.co
 # Rooms
 
 Room.create(name: "201", building_id: 1);
+Room.create(name: "206", building_id: 1);
 
 # Courses
 
