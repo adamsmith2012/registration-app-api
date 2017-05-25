@@ -3,9 +3,16 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   def index
-    @schedules = Schedule.all
-
-    render json: @schedules
+    if params[:student_id]
+      @schedules = Schedule.where(student_id: params[:student_id])
+      render json: @schedules.to_json(include: :course)
+    elsif params[:course_id]
+      @schedules = Schedule.where(course_id: params[:course_id])
+      render json: @schedules.to_json(include: :student)
+    else
+      @schedules = Schedule.all
+      render json: @schedules
+    end
   end
 
   # GET /schedules/1

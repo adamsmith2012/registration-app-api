@@ -13,6 +13,7 @@ Student.create(username: "adamsmith", password: "adamsmith", first_name: "Adam",
 # Departments
 
 Department.create(name: "Mathematics", symbol: "MATH");
+Department.create(name: "Philosophy", symbol: "PHIL");
 
 # Instructors
 
@@ -33,6 +34,7 @@ Room.create(name: "201", building_id: 1);
 # Courses
 
 Course.create(name: "Differential Equations", description: "Fun with PDEs", department_id: 1, term_id: 1, instructor_id: 1);
+Course.create(name: "Ethics", description: "Ethics", department_id: 2, term_id: 1, instructor_id: 1);
 
 # Schedules
 
