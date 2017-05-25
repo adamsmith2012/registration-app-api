@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :meetings
   # resources :schedules
   # resources :buildings
-  # resources :terms
+  resources :terms
   # resources :instructors
   resources :courses do
     resources :students, only: [:index]
