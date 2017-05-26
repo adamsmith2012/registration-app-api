@@ -63,7 +63,7 @@ class StudentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def student_params
-      params.require(:student).permit(:username, :password_digest, :first_name, :last_name)
+      params.require(:student).permit(:username, :password_digest, :first_name, :last_name, :email, :dob, :num)
     end
 
     # Generate a JavaScript Web Token
