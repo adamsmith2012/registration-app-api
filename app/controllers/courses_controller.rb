@@ -9,6 +9,9 @@ class CoursesController < ApplicationController
     elsif params[:student_id]
       @courses = Student.find(params[:student_id]).courses
       render json: @courses.to_json(include: {:meetings => {include: {:room => {include: :building}}}, :instructor => {}})
+    elsif params[:term_id]
+      @courses = Term.find(params[:term_id]).courses
+      render json: @courses.to_json(include: {:meetings => {include: {:room => {include: :building}}}, :instructor => {}})
     else
       @courses = Course.all
       # render json: @courses.to_json(include: [:meetings => {include: [:room => {include: :building}]}], include: :instructor)
