@@ -8,8 +8,8 @@
 
 # Students
 
-Student.create(username: "adamsmith", password: "adamsmith", first_name: "Adam", last_name: "Smith");
-Student.create(username: "billy", password: "billy", first_name: "Billy", last_name: "Johnson");
+Student.create(username: "adamsmith", password: "adamsmith", first_name: "Adam", last_name: "Smith", num: "23142522", email: "adam@mail.com", dob: "1994-03-18");
+Student.create(username: "billy", password: "billy", first_name: "Billy", last_name: "Johnson", num: "42759833", email: "billy@mail.com", dob: "1993-05-09");
 
 # Departments
 
