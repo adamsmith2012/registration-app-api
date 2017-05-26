@@ -61,7 +61,7 @@ class StudentsController < ApplicationController
       @student = Student.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameter "white list" through
     def student_params
       params.require(:student).permit(:username, :password_digest, :first_name, :last_name, :email, :dob, :num)
     end
