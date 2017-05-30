@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # resources :rooms
   resources :meetings
   resources :schedules
-  # resources :buildings
+  resources :buildings, only: [:show]
   resources :terms do
     resources :courses, only: [:index]
   end

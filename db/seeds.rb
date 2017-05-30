@@ -27,7 +27,7 @@ Term.create(symbol: "F16", season: "Fall", year: 2016);
 
 # Buildings
 
-Building.create(name: "Paccar", symbol: "PA", img: "http://www.alscarchitects.com/assets/Projects/paccar-center-for-applied-science-ID69/gonzaga-paccar.jpg");
+Building.create(name: "Paccar", symbol: "PA", img: "http://www.alscarchitects.com/assets/Projects/paccar-center-for-applied-science-ID69/gonzaga-paccar.jpg", description: "Dedicated in 2008, the PACCAR Center for Applied Science is Gonzaga University's first \"green\" building, and received the prestigious \"Gold\" certification from the Leadership in Energy and Environmental Design (LEED) rating system in 2010. The building incorporates engineering principles that promote energy conservation and sustainability in design and construction practices. The PACCAR Center houses sophisticated laboratories dedicated to robotics, artificial vision, and transmission and distribution line engineering, as well as classrooms and faculty offices.");
 
 # Rooms
 
