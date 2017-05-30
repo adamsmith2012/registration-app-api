@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #   resources :courses, only: [:index]
   # end
   resources :students do
+    resources :schedules
     resources :terms do
       resources :courses, only: [:index]
     end
