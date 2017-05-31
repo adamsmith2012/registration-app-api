@@ -23,8 +23,8 @@ class SchedulesController < ApplicationController
   # POST /schedules
   def create
     @schedule = Schedule.new(schedule_params)
-
     if @schedule.save
+      updateCourseCount(schedule_params[:course_id])
       render json: @schedule, status: :created
     else
       render json: @schedule.errors, status: :unprocessable_entity
@@ -42,7 +42,9 @@ class SchedulesController < ApplicationController
 
   # DELETE /schedules/1
   def destroy
+    course_id = @schedule.course_id
     @schedule.destroy
+    updateCourseCount(course_id)
   end
 
   private

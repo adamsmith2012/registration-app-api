@@ -29,4 +29,9 @@ class ApplicationController < ActionController::API
      Student.find(decoded_jwt[0]["user"]["id"])
    end
 
+   def updateCourseCount(id)
+     count = Schedule.where(:course_id => id).count
+     Course.find(id).update(enrolled: count)
+   end
+
 end
