@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
   def index
     if params[:student_id]
       @schedules = Schedule.where(student_id: params[:student_id])
-      render json: @schedules.to_json(include: {:course => {include: :instructor}})
+      render json: @schedules.to_json(include: {:course => {include: {:instructor => {}, :department => {}}}})
     elsif params[:course_id]
       @schedules = Schedule.where(course_id: params[:course_id])
       render json: @schedules.to_json(include: :student)
