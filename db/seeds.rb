@@ -18,7 +18,7 @@ Department.create(name: "Philosophy", symbol: "PHIL");
 
 # Instructors
 
-Instructor.create(first_name: "Mark", last_name: "Jones");
+Instructor.create(first_name: "Mark", last_name: "Jones", email: "jones_mark@university.edu");
 
 # Terms
 
