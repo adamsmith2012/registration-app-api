@@ -41,11 +41,16 @@ Course.create(name: "Introduction to Ethics", number: 109, description: "Introdu
 Course.create(name: "Introduction to Calculus", number: 221, description: "Introduction to Calculus", department_id: 1, term_id: 2, instructor_id: 1, crn: 29675, credits: 3, enrolled: 0, cap: 20);
 
 # Schedules
-
+# Course 1
 Schedule.create(student_id: 1, course_id: 1);
-Schedule.create(student_id: 1, course_id: 2);
-Schedule.create(student_id: 1, course_id: 3);
 Schedule.create(student_id: 2, course_id: 1);
+Course.find(1).update(enrolled: 2)
+# Course 2
+Schedule.create(student_id: 1, course_id: 2);
+Course.find(2).update(enrolled: 1)
+# Course 3
+Schedule.create(student_id: 1, course_id: 3);
+Course.find(3).update(enrolled: 1)
 
 # Meetings
 Meeting.create(time: "10:00 AM", day: 'T', room_id: 1, course_id: 1);
