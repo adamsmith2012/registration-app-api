@@ -18,7 +18,7 @@ Department.create(name: "Philosophy", symbol: "PHIL");
 
 # Instructors
 
-Instructor.create(first_name: "Mark", last_name: "Jones", email: "jones_mark@university.edu");
+Instructor.create(first_name: "Mark", last_name: "Jones", email: "jones_mark@university.edu", bio: "Received doctorate at age 23", img: "http://cdn.bulbagarden.net/upload/8/84/Professor_Oak_XY.png");
 
 # Terms
 
