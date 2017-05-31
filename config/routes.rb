@@ -3,15 +3,15 @@ Rails.application.routes.draw do
   # resources :rooms
   resources :meetings
   resources :schedules
-  resources :buildings, only: [:show]
+  resources :buildings, only: [:index, :show]
   resources :terms do
     resources :courses, only: [:index]
   end
-  # resources :instructors
+  resources :instructors, only: [:index, :show]
   resources :courses do
     resources :students, only: [:index]
   end
-  resources :departments
+  resources :departments, only: [:index, :show]
   resources :students do
     resources :schedules
     resources :terms do
