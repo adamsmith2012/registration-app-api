@@ -36,9 +36,9 @@ Room.create(name: "206", building_id: 1);
 
 # Courses
 
-Course.create(name: "Differential Equations", description: "Fun with PDEs", department_id: 1, term_id: 1, instructor_id: 1, crn: 47263, credits: 3);
-Course.create(name: "Ethics", description: "Ethics", department_id: 2, term_id: 1, instructor_id: 1, crn: 56398, credits: 3);
-Course.create(name: "Calculus 1", description: "Calc", department_id: 1, term_id: 2, instructor_id: 1, crn: 29675, credits: 3);
+Course.create(name: "Partial Differential Equations", number: 422, description: "Fun with PDEs", department_id: 1, term_id: 1, instructor_id: 1, crn: 47263, credits: 3, enrolled: 0, cap: 15);
+Course.create(name: "Introduction to Ethics", number: 109, description: "Introduction to Ethics", department_id: 2, term_id: 1, instructor_id: 1, crn: 56398, credits: 3, enrolled: 0, cap: 20);
+Course.create(name: "Introduction to Calculus", number: 221, description: "Introduction to Calculus", department_id: 1, term_id: 2, instructor_id: 1, crn: 29675, credits: 3, enrolled: 0, cap: 20);
 
 # Schedules
 
