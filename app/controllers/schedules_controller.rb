@@ -22,12 +22,17 @@ class SchedulesController < ApplicationController
 
   # POST /schedules
   def create
-    @schedule = Schedule.new(schedule_params)
-    if @schedule.save
-      updateCourseCount(schedule_params[:course_id])
-      render json: @schedule, status: :created
+    course = Course.find(schedule_params[:course_id]);
+    if course.enrolled >= course.cap
+      render json: {message: "Course is full"}, status: :accepted
     else
-      render json: @schedule.errors, status: :unprocessable_entity
+      @schedule = Schedule.new(schedule_params)
+      if @schedule.save
+        updateCourseCount(schedule_params[:course_id])
+        render json: @schedule, status: :created
+      else
+        render json: @schedule.errors, status: :unprocessable_entity
+      end
     end
   end
 
