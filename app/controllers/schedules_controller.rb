@@ -29,7 +29,7 @@ class SchedulesController < ApplicationController
       @schedule = Schedule.new(schedule_params)
       if @schedule.save
         updateCourseCount(schedule_params[:course_id])
-        render json: @schedule, status: :created
+        render json: @schedule.to_json(include: {:course => {include: {:instructor => {}, :department => {}}}}), status: :created
       else
         render json: @schedule.errors, status: :unprocessable_entity
       end
