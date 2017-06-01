@@ -27,11 +27,15 @@ class SchedulesController < ApplicationController
       render json: {message: "Course is full"}, status: :accepted
     else
       @schedule = Schedule.new(schedule_params)
-      if @schedule.save
-        updateCourseCount(schedule_params[:course_id])
-        render json: @schedule.to_json(include: {:course => {include: {:instructor => {}, :department => {}}}}), status: :created
-      else
-        render json: @schedule.errors, status: :unprocessable_entity
+      begin
+        if @schedule.save
+          updateCourseCount(schedule_params[:course_id])
+          render json: @schedule.to_json(include: {:course => {include: {:instructor => {}, :department => {}}}}), status: :created
+        else
+          render json: @schedule.errors, status: :unprocessable_entity
+        end
+      rescue ActiveRecord::RecordNotUnique
+        render json: {message: "Already registered"}, status: :accepted
       end
     end
   end
