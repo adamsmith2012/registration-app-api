@@ -86,11 +86,29 @@ Course.create(name: "C.S. Lewis", number: 417, description: "C.S. Lewis", depart
 # Buildings
 
 Building.create(name: "Paccar", symbol: "PA", img: "http://www.alscarchitects.com/assets/Projects/paccar-center-for-applied-science-ID69/gonzaga-paccar.jpg", description: "Dedicated in 2008, the PACCAR Center for Applied Science is Gonzaga University's first \"green\" building, and received the prestigious \"Gold\" certification from the Leadership in Energy and Environmental Design (LEED) rating system in 2010. The building incorporates engineering principles that promote energy conservation and sustainability in design and construction practices. The PACCAR Center houses sophisticated laboratories dedicated to robotics, artificial vision, and transmission and distribution line engineering, as well as classrooms and faculty offices.");
+Building.create(name: "Herak", symbol: "HK", img: "https://walkerconstructioninc.blob.core.windows.net/projects/gonzaga-herak-center/gonzaga-herak-center-06.jpg", description: "Originally built in 1948 and extensively expanded and upgraded, the Herak Center serves as home to Gonzaga's School of Engineering and Applied Science, which offers degrees in civil, computer, electrical, and mechanical engineering, as well as engineering management and computer science. Additionally, the building houses the departments of physics and mathematics.");
+Building.create(name: "College Hall", symbol: "CH", img: "http://mediad.publicbroadcasting.net/p/idaho/files/201305/Gonzaga%20hall.jpg", description: "Built in 1898 and formerly called the Administration Building, College Hall is Gonzaga's oldest and most storied hall. It houses many of Gonzaga's administrative offices, including Admissions, Financial Aid, Registrar, Student Life, and Public Relations. It also serves as one of Gonzaga's primary classroom buildings. The University Chapel, with its beautiful stained glass windows, is located on the third floor.");
 
 # Rooms
 
-Room.create(name: "201", building_id: 1);
-Room.create(name: "206", building_id: 1);
+Room.create(name: "111", building_id: 1);
+Room.create(name: "226", building_id: 1);
+Room.create(name: "221", building_id: 1);
+Room.create(name: "222", building_id: 1);
+Room.create(name: "116", building_id: 1);
+Room.create(name: "105", building_id: 1);
+Room.create(name: "231", building_id: 2);
+Room.create(name: "212", building_id: 2);
+Room.create(name: "321", building_id: 2);
+Room.create(name: "316", building_id: 2);
+Room.create(name: "213", building_id: 2);
+Room.create(name: "105", building_id: 2);
+Room.create(name: "201", building_id: 3);
+Room.create(name: "206", building_id: 3);
+Room.create(name: "321", building_id: 3);
+Room.create(name: "316", building_id: 3);
+Room.create(name: "416", building_id: 3);
+Room.create(name: "405", building_id: 3);
 
 
 # Schedules
@@ -106,5 +124,19 @@ Schedule.create(student_id: 1, course_id: 3);
 Course.find(3).update(enrolled: 1)
 
 # Meetings
-Meeting.create(time: "10:00 AM", day: 'T', room_id: 1, course_id: 1);
-Meeting.create(time: "11:00 AM", day: 'R', room_id: 1, course_id: 1);
+
+# 39 courses
+1.upto(39) do |course_id|
+  days = ['M', 'T', 'W', 'R', 'F']
+  times = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM']
+  days_of_class = [2,3].sample
+  index = 0
+  index = 1 if days_of_class == 2
+  days_of_class.times do
+    day = days[index]
+    time = times.sample
+    room_id = Room.find(rand(Room.count) + 1).id
+    Meeting.create(time: time, day: day, room_id: room_id, course_id: course_id);
+    index = index + 2
+  end
+end
