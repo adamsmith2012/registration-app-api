@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-    render json: @course.to_json(include: {:meetings => {include: {:room => {include: :building}}}, :instructor => {}, :department => {}})
+    render json: @course.to_json(include: {:meetings => {include: {:room => {include: :building}}}, :instructor => {}, :department => {}, :students => {}})
   end
 
   # POST /courses
