@@ -9,8 +9,17 @@
 # Students
 
 Student.create(username: "adamsmith", password: "adamsmith", first_name: "Adam", last_name: "Smith", num: "23142522", email: "adam@mail.com", dob: "1994-03-18");
-Student.create(username: "billy", password: "billy", first_name: "Billy", last_name: "Johnson", num: "42759833", email: "billy@mail.com", dob: "1993-05-09");
 Student.create(username: "guest", password: "guest", first_name: "John", last_name: "Doe", num: "39857433", email: "johndoe@mail.com", dob: "1993-05-09");
+
+50.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  username = (first_name + last_name).downcase + rand(100).to_s
+  dob = "1990-01-01"
+  num = Faker::Number.number(8)
+  email = username + "@mail.com"
+  Student.create(username: username, password: username, first_name: first_name, last_name: last_name, num: num, email: email, dob: dob);
+end
 
 # Instructors
 
@@ -122,6 +131,22 @@ Course.find(2).update(enrolled: 1)
 # Course 3
 Schedule.create(student_id: 1, course_id: 3);
 Course.find(3).update(enrolled: 1)
+
+3.upto(53) do |student_id|
+  5.times do
+    course_id = rand(1..39)
+    course = Course.find(course_id)
+    unless course.enrolled >= course.cap
+      begin
+        Schedule.create(student_id: student_id, course_id: course_id)
+        enrolled = course.enrolled + 1
+        course.update(enrolled: enrolled)
+      rescue
+        puts "failed"
+      end
+    end
+  end
+end
 
 # Meetings
 
